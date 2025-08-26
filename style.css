@@ -1,176 +1,208 @@
-body {
-    background-image: url('image.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #7DBA24; 
+    font-family: "Segoe UI", Arial, sans-serif;
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 20px;
-    box-sizing: border-box;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    height: 55px;
 }
 
 .form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
     width: 100%;
-    max-width: 900px; /* más ancho en pantallas grandes */
-    background-color: rgba(255, 255, 255, 0.85);
-    padding: 30px;
-    border-radius: 20px;
+    max-width: 950px;
+    background: #fff;
+    padding: 45px 35px;
+    border-radius: 22px;
+    margin: 40px auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: fadeIn 0.6s ease-in-out;
     position: relative;
-    margin: auto;
-    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.form::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: #F10180;
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
+}
+
+.form::after {
+    content: "";
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 140px;
+    height: 140px;
+    background: rgba(241, 1, 128, 0.08);
+    border-radius: 50%;
+    z-index: 0;
 }
 
 .title {
-    font-size: 28px;
-    color: rgb(26, 217, 20);
-    font-weight: 600;
-    letter-spacing: -1px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding-left: 30px;
-    margin-bottom: 10px;
-}
-
-.title::before, .title::after {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    border-radius: 50%;
-    left: 0px;
-    background-color: rgb(26, 217, 20);
-}
-
-.title::before {
-    width: 18px;
-    height: 18px;
-    background-color: rgb(26, 217, 20);
-}
-
-.title::after {
-    width: 18px;
-    height: 18px;
-    animation: pulse 1s linear infinite;
-}
-
-.message, .signin {
-    color: rgba(88, 87, 87, 0.822);
-    font-size: 14px;
-}
-
-.signin {
+    font-size: 32px;
     text-align: center;
+    color: #7DBA24;
+    font-weight: 800;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
 }
 
-.signin a {
-    color: rgb(26, 217, 20);
+.message {
+    color: #444;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 12px;
+    z-index: 1;
 }
 
-.signin a:hover {
-    text-decoration: underline rgb(26, 217, 20);
-}
-
+/* INPUTS */
 .flex {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 18px;
     width: 100%;
+    z-index: 1;
 }
 
 .form label {
-    position: relative;
     flex: 1 1 100%;
-    min-width: 150px;
-    box-sizing: border-box;
+    min-width: 200px;
+    position: relative;
 }
 
-.form label .input {
+.input {
     width: 100%;
-    padding: 10px 10px 20px 10px;
-    outline: 0;
-    border: 1px solid rgba(105, 105, 105, 0.397);
-    border-radius: 10px;
-    box-sizing: border-box;
+    padding: 14px 14px 16px;
+    border: 1.6px solid #ddd;
+    border-radius: 14px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background: #fafafa;
 }
 
-.form label .input + span {
+.input:focus {
+    border-color: #7DBA24;
+    background: #fff;
+    outline: none;
+    box-shadow: 0 0 6px rgba(125,186,36,0.4);
+}
+
+.form label span {
     position: absolute;
-    left: 10px;
     top: 15px;
-    color: grey;
+    left: 14px;
+    color: #777;
     font-size: 0.9em;
-    cursor: text;
-    transition: 0.3s ease;
+    transition: 0.3s;
+    pointer-events: none;
 }
 
-.form label .input:placeholder-shown + span {
-    top: 15px;
-    font-size: 0.9em;
-}
-
-.form label .input:focus + span,
-.form label .input:valid + span {
-    top: 30px;
-    font-size: 0.7em;
+.input:focus + span,
+.input:valid + span {
+    top: -9px;
+    left: 12px;
+    font-size: 0.75em;
+    background: #fff;
+    padding: 0 6px;
+    border-radius: 6px;
+    color: #F10180;
     font-weight: 600;
-}
-
-.form label .input:valid + span {
-    color: green;
 }
 
 .submit {
     border: none;
-    outline: none;
-    background-color: rgb(26, 217, 20);
-    padding: 12px;
-    border-radius: 10px;
+    background: #7DBA24; 
+    padding: 16px;
+    border-radius: 14px;
     color: #fff;
-    font-size: 16px;
-    transform: .3s ease;
+    font-size: 18px;
+    font-weight: 700;
     cursor: pointer;
-    width: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 1;
 }
 
 .submit:hover {
-    background-color: rgb(26, 217, 20);
+    background: #65971d; 
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 18px rgba(125,186,36,0.4);
 }
 
-@keyframes pulse {
-    from {
-        transform: scale(0.9);
-        opacity: 1;
-    }
-    to {
-        transform: scale(1.8);
-        opacity: 0;
-    }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* MEDIA QUERY PARA PANTALLAS GRANDES */
 @media (min-width: 768px) {
     .form {
-        max-width: 1000px;
+        max-width: 1100px;
     }
 
     .flex {
         flex-direction: row;
-        gap: 20px;
     }
 
     .form label {
-        flex: 1 1 48%; /* dos por fila */
+        flex: 1 1 48%;
     }
 
     .title {
-        font-size: 32px;
+        font-size: 36px;
     }
 }
+.input[type="date"] {
+    color: #333;
+    font-family: inherit;
+    padding-right: 40px
+}
+
+.input[type="date"]:invalid {
+    color: transparent; 
+}
+
+.input[type="date"]:focus + span,
+.input[type="date"]:valid + span {
+    top: -9px;
+    left: 12px;
+    font-size: 0.75em;
+    background: #fff;
+    padding: 0 6px;
+    border-radius: 6px;
+    color: #F10180; 
+    font-weight: 600;
+}
+
