@@ -502,4 +502,3 @@ textarea.input:not(:placeholder-shown)+span {
 .form-panel::-webkit-scrollbar-thumb:hover {
     background: rgba(125, 186, 36, 0.5);
 }
-
